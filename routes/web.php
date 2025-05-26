@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProfilePageController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -22,3 +23,17 @@ Route::get('/index', function () {
 })->name('index');
 
 require __DIR__.'/auth.php';
+
+//profielpagina
+Route::get('/mijn-profiel', [ProfilePageController::class, 'myProfile'])
+    ->middleware('auth')
+    ->name('profile.myProfile');
+
+//profiel aanpassen
+Route::get('/mijn-profiel/bewerken', [ProfilePageController::class, 'edit'])
+    ->middleware('auth')
+    ->name('profile.edit');
+
+Route::patch('/mijn-profiel/bewerken', [ProfilePageController::class, 'update'])
+    ->middleware('auth')
+    ->name('profile.update');

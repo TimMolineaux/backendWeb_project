@@ -1,17 +1,17 @@
-<nav style="display:flex; justify-content:space-between; background:#eee; padding:10px 20px;">
-    <div class="nav-left" style="display:flex; gap:15px; align-items:center;">
-        <a href="{{ route('index') }}" style="font-weight:bold; color:#333; text-decoration:none;">Home</a>
+<nav>
+    <div class="nav-left">
+        <a href="{{ route('index') }}">Home</a>
     </div>
-    <div class="nav-right" style="display:flex; gap:15px; align-items:center;">
+    <div class="nav-right">
         @auth
-            <span>{{ Auth::user()->name }}</span>
-            <form method="POST" action="{{ route('logout') }}" style="display:inline;">
+            <a href="{{ route('profile.myProfile') }}">{{ Auth::user()->name }}</a>
+            <form method="POST" action="{{ route('logout') }}">
                 @csrf
-                <button type="submit" style="background:none; border:none; cursor:pointer; color:blue; text-decoration:underline; padding:0;">Uitloggen</button>
+                <button type="submit" >Uitloggen</button>
             </form>
         @else
-            <a href="{{ route('login') }}" style="color:#333; text-decoration:none;">Inloggen</a>
-            <a href="{{ route('register') }}" style="color:#333; text-decoration:none;">Registreren</a>
+            <a href="{{ route('login') }}">Inloggen</a>
+            <a href="{{ route('register') }}">Registreren</a>
         @endauth
     </div>
 </nav>

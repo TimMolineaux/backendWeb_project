@@ -13,7 +13,7 @@
         @csrf
     </form>
 
-    <form method="post" action="{{ route('profile.update') }}" class="mt-6 space-y-6">
+    <form method="post" action="{{ route('profile.update') }}" enctype="multipart/form-data" class="mt-6 space-y-6">
         @csrf
         @method('patch')
 
@@ -45,6 +45,27 @@
                     @endif
                 </div>
             @endif
+        </div>
+
+        <!-- Verjaardag -->
+        <div>
+            <x-input-label for="birthday" :value="__('Birthday')" />
+            <x-text-input id="birthday" name="birthday" type="date" class="mt-1 block w-full" :value="old('birthday', $user->birthday)" />
+            <x-input-error class="mt-2" :messages="$errors->get('birthday')" />
+        </div>
+
+        <!-- Over mij -->
+        <div>
+            <x-input-label for="about_me" :value="__('About Me')" />
+            <textarea id="about_me" name="about_me" rows="4" class="mt-1 block w-full rounded-md shadow-sm border-gray-300 focus:ring focus:ring-indigo-200 focus:ring-opacity-50 dark:bg-gray-700 dark:text-white">{{ old('about_me', $user->about_me) }}</textarea>
+            <x-input-error class="mt-2" :messages="$errors->get('about_me')" />
+        </div>
+
+        <!-- Profielfoto -->
+        <div>
+            <x-input-label for="profile_picture" :value="__('Profile Picture')" />
+            <input id="profile_picture" name="profile_picture" type="file" class="mt-1 block w-full text-sm text-gray-900 dark:text-white" />
+            <x-input-error class="mt-2" :messages="$errors->get('profile_picture')" />
         </div>
 
         <div class="flex items-center gap-4">

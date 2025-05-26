@@ -1,5 +1,7 @@
 <?php
 
+//seeder om een standaard al een admin account aan te maken
+
 namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -16,8 +18,10 @@ class AdminUserSeeder extends Seeder
     {
         User::create([
         'name' => 'admin',
-        'email' => 'admin@test.be',
-        'password' => Hash::make('Password'),
+        'email' => 'admin@ehb.be',
+        'password' => Hash::make('Password!321'),
+        'birthday' => '2004-02-19',
+        'about_me' => 'Initiele default admin account',
         'role' => 'admin',
         ]);
     }
