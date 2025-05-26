@@ -4,6 +4,7 @@
         @auth
             @if(Auth::user()->role === 'admin')
                 <a href="{{ route('admin.userIndex') }}">Gebruikersbeheer</a>
+                <a href="{{ route('news.newsIndex') }}">Nieuwsbeheer</a>
             @endif
         @endauth
     </div>
