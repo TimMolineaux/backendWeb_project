@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ProfilePageController;
+use App\Http\Controllers\UserController;
+use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -37,3 +39,15 @@ Route::get('/mijn-profiel/bewerken', [ProfilePageController::class, 'edit'])
 Route::patch('/mijn-profiel/bewerken', [ProfilePageController::class, 'update'])
     ->middleware('auth')
     ->name('profile.update');
+
+
+//gebuikersbeheer
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('/admin', [UserController::class, 'index'])->name('admin.userIndex');
+});
+
+//rol aanpassen
+Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+    Route::get('/admin', [UserController::class, 'index'])->name('admin.userIndex');
+    Route::patch('/admin/{user}/role', [UserController::class, 'updateRole'])->name('admin.updateRole');
+});
