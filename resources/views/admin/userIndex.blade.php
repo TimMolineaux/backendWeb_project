@@ -35,4 +35,36 @@
         @endforeach
     </tbody>
 </table>
+
+<h3>Nieuwe gebruiker aanmaken</h3>
+
+<form method="POST" action="{{ route('admin.store') }}">
+    @csrf
+
+    <div>
+        <label for="name">Naam:</label>
+        <input type="text" id="name" name="name" required>
+    </div>
+
+    <div>
+        <label for="email">E-mailadres:</label>
+        <input type="email" id="email" name="email" required>
+    </div>
+
+    <div>
+        <label for="password">Wachtwoord:</label>
+        <input type="password" id="password" name="password" required>
+    </div>
+
+    <div>
+        <label for="role">Rol:</label>
+        <select name="role" id="role">
+            <option value="user">Gebruiker</option>
+            <option value="admin">Admin</option>
+        </select>
+    </div>
+
+    <button type="submit">Gebruiker aanmaken</button>
+</form>
+
 @endsection

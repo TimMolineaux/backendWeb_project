@@ -51,3 +51,6 @@ Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(
     Route::get('/admin', [UserController::class, 'index'])->name('admin.userIndex');
     Route::patch('/admin/{user}/role', [UserController::class, 'updateRole'])->name('admin.updateRole');
 });
+
+//gebruiker aanmaken
+Route::post('/admin', [UserController::class, 'store'])->name('admin.store');
