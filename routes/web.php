@@ -5,10 +5,18 @@ use App\Http\Controllers\ProfilePageController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\FaqCategoryController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
+//homepagina
 Route::get('/', [IndexController::class, 'showNews'])->name('index');
+
+
+Route::get('/dashboard', function () {
+    return view('index');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -39,7 +47,7 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
 });
 
 //rol aanpassen
-Route::middleware(['auth', \App\Http\Middleware\AdminMiddleware::class])->group(function () {
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin', [UserController::class, 'index'])->name('admin.userIndex');
     Route::patch('/admin/{user}/role', [UserController::class, 'updateRole'])->name('admin.updateRole');
 });
@@ -60,4 +68,27 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/nieuws/{news}/edit', [NewsController::class, 'edit'])->name('news.edit');
     Route::put('/admin/nieuws/{news}', [NewsController::class, 'update'])->name('news.update');
     Route::delete('/admin/nieuws/{news}', [NewsController::class, 'destroy'])->name('news.destroy');
+});
+
+
+// Publieke FAQ-pagina
+Route::get('/faq', [FaqController::class, 'index'])->name('faq.public');
+
+// Adminbeheer van FAQ
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    //opties voor beheren van faq items
+    Route::get('/admin/faq', [FaqController::class, 'adminIndex'])->name('faq.adminIndex');
+    Route::get('/admin/faq/create', [FaqController::class, 'create'])->name('faq.create');
+    Route::post('/admin/faq', [FaqController::class, 'store'])->name('faq.store');
+    Route::get('/admin/faq/{faq}/edit', [FaqController::class, 'edit'])->name('faq.edit');
+    Route::put('/admin/faq/{faq}', [FaqController::class, 'update'])->name('faq.update');
+    Route::delete('/admin/faq/{faq}', [FaqController::class, 'destroy'])->name('faq.destroy');
+
+    //opties voor beheren van categorieën
+    Route::get('/admin/faq/categories/create', [FaqCategoryController::class, 'create'])->name('faq.categories.create');
+    Route::post('/admin/faq/categories', [FaqCategoryController::class, 'store'])->name('faq.categories.store');
+    Route::get('/admin/faq/categories', [FaqCategoryController::class, 'index'])->name('faq.categories.index');
+    Route::get('/admin/faq/categories/{category}/edit', [FaqCategoryController::class, 'edit'])->name('faq.categories.edit');
+    Route::put('/admin/faq/categories/{category}', [FaqCategoryController::class, 'update'])->name('faq.categories.update');
+    Route::delete('/admin/faq/categories/{category}', [FaqCategoryController::class, 'destroy'])->name('faq.categories.destroy');
 });

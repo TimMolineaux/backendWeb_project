@@ -1,10 +1,12 @@
 <nav>
     <div class="nav-left">
         <a href="{{ route('index') }}">Home</a>
+        <a href="{{ route('faq.public') }}">FAQ</a>
         @auth
             @if(Auth::user()->role === 'admin')
                 <a href="{{ route('admin.userIndex') }}">Gebruikersbeheer</a>
                 <a href="{{ route('news.newsIndex') }}">Nieuwsbeheer</a>
+                <a href="{{ route('faq.adminIndex') }}">FaqsBeheer</a>
             @endif
         @endauth
     </div>

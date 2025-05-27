@@ -11,7 +11,7 @@
         </div>
     @endif
 
-    <a href="{{ route('news.create') }}" style="display: inline-block; margin-bottom: 15px;">➕ Nieuw nieuwsitem</a>
+    <a href="{{ route('news.create') }}" style="display: inline-block; margin-bottom: 15px;">Nieuw nieuwsitem</a>
 
     <table cellpadding="10" cellspacing="0">
         <thead>

@@ -96,7 +96,7 @@ class NewsController extends Controller
 
         $news->delete();
 
-        return redirect()->route('news.index')->with('status', 'Nieuwsitem succesvol verwijderd.');
+        return redirect()->route('news.newsIndex')->with('status', 'Nieuwsitem succesvol verwijderd.');
     }
 
     public function newsIndex()
