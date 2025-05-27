@@ -1,6 +1,6 @@
 @extends('layouts.layout')
 
-@section('title', 'Nieuws beheren')
+@section('title', 'Nieuwsbeheer')
 
 @section('content')
     <h1>Nieuws beheren</h1>

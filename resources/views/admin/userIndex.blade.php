@@ -1,5 +1,7 @@
 @extends('layouts.layout')
 
+@section('title', 'Gebruikersbeheer')
+
 @section('content')
 <h1>Gebruikersoverzicht</h1>
 
