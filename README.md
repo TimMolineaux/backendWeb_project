@@ -52,4 +52,3 @@ Dit project is een nieuwswebsite gebouwd met Laravel en Breeze. Het bevat een lo
 - Database met seeders
 - Relaties:
   -One-to-many: FAQ ↔ Category
--Basis css layout
