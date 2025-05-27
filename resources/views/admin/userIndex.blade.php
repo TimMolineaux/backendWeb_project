@@ -3,12 +3,6 @@
 @section('content')
 <h1>Gebruikersoverzicht</h1>
 
-@if (session('status'))
-    <div style="color: green;">
-        {{ session('status') }}
-    </div>
-@endif
-
 <table cellpadding="8" cellspacing="0">
     <thead>
         <tr>
@@ -72,5 +66,9 @@
 
     <button type="submit">Gebruiker aanmaken</button>
 </form>
+
+@if (session('status'))
+    <div style="color: green;">{{ session('status') }}</div>
+@endif
 
 @endsection

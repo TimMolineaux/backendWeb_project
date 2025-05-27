@@ -5,10 +5,6 @@
 @section('content')
     <h1>Contacteer de admins</h1>
 
-    @if (session('status'))
-        <div style="color: green;">{{ session('status') }}</div>
-    @endif
-
     @if ($errors->any())
         <ul style="color: red;">
             @foreach ($errors->all() as $error)
@@ -27,4 +23,9 @@
 
         <button type="submit">Versturen</button>
     </form>
+
+    @if (session('status'))
+        <div style="color: green;">{{ session('status') }}</div>
+    @endif
+    
 @endsection

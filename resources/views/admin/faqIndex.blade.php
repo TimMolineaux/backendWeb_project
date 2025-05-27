@@ -5,9 +5,7 @@
 @section('content')
     <h1>FAQ Beheer</h1>
 
-    @if (session('status'))
-        <div style="color: green;">{{ session('status') }}</div>
-    @endif
+    <h2>FAQ-Items</h2>
 
     <table cellpadding="10" cellspacing="0">
         <thead>
@@ -40,7 +38,7 @@
     <a href="{{ route('faq.create') }}">Nieuwe FAQ toevoegen</a>
 
 
-    <h1>FAQ Categorieën</h1>
+    <h2>FAQ-Categorieën</h2>
 
     <table cellpadding="10" cellspacing="0">
         <thead>
@@ -70,7 +68,7 @@
         </tbody>
     </table>
 
-    <h1>Nieuwe categorie aanmaken</h1>
+    <h2>Nieuwe categorie aanmaken</h2>
 
     <form method="POST" action="{{ route('faq.categories.store') }}">
         @csrf
@@ -82,5 +80,9 @@
 
         <button type="submit">Aanmaken</button>
     </form>
+
+    @if (session('status'))
+        <div style="color: green;">{{ session('status') }}</div>
+    @endif
 
 @endsection

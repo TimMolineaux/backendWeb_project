@@ -5,12 +5,6 @@
 @section('content')
     <h1>Nieuws beheren</h1>
 
-    @if (session('status'))
-        <div style="color: green;">
-            {{ session('status') }}
-        </div>
-    @endif
-
     <a href="{{ route('news.create') }}" style="display: inline-block; margin-bottom: 15px;">Nieuw nieuwsitem</a>
 
     <table cellpadding="10" cellspacing="0">
@@ -42,4 +36,10 @@
             @endforelse
         </tbody>
     </table>
+
+    @if (session('status'))
+        <div style="color: green;">
+            {{ session('status') }}
+        </div>
+    @endif
 @endsection
