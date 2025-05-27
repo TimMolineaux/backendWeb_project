@@ -7,6 +7,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\NewsController;
 use App\Http\Controllers\FaqController;
 use App\Http\Controllers\FaqCategoryController;
+use App\Http\Controllers\ContactController;
 use App\Http\Middleware\AdminMiddleware;
 use Illuminate\Support\Facades\Route;
 
@@ -91,4 +92,9 @@ Route::middleware(['auth', AdminMiddleware::class])->group(function () {
     Route::get('/admin/faq/categories/{category}/edit', [FaqCategoryController::class, 'edit'])->name('faq.categories.edit');
     Route::put('/admin/faq/categories/{category}', [FaqCategoryController::class, 'update'])->name('faq.categories.update');
     Route::delete('/admin/faq/categories/{category}', [FaqCategoryController::class, 'destroy'])->name('faq.categories.destroy');
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
+    Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });

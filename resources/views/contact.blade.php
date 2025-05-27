@@ -1,0 +1,30 @@
+@extends('layouts.layout')
+
+@section('title', 'Contacteer ons')
+
+@section('content')
+    <h1>Contacteer de admins</h1>
+
+    @if (session('status'))
+        <div style="color: green;">{{ session('status') }}</div>
+    @endif
+
+    @if ($errors->any())
+        <ul style="color: red;">
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    @endif
+
+    <form action="{{ route('contact.store') }}" method="POST">
+        @csrf
+
+        <div>
+            <label for="message">Bericht:</label><br>
+            <textarea name="message" id="message" rows="6" cols="50" required>{{ old('message') }}</textarea>
+        </div>
+
+        <button type="submit">Versturen</button>
+    </form>
+@endsection
