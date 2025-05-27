@@ -1,1 +1,1 @@
-<p>&copy; {{ date('Y') }} Mijn Website</p>
+<p>&copy; {{ date('Y') }} Het Eerste Nieuws. Alle rechten voorbehouden</p>

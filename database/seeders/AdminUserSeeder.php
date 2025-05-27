@@ -1,6 +1,6 @@
 <?php
 
-//seeder om een standaard al een admin account aan te maken
+//seeder om een standaard een admin account te maken zoals in de opdracht beschreven stond
 
 namespace Database\Seeders;
 

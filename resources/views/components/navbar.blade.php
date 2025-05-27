@@ -7,7 +7,7 @@
             @if(Auth::user()->role === 'admin')
                 <a href="{{ route('admin.userIndex') }}">Gebruikersbeheer</a>
                 <a href="{{ route('news.newsIndex') }}">Nieuwsbeheer</a>
-                <a href="{{ route('faq.adminIndex') }}">FaqsBeheer</a>
+                <a href="{{ route('faq.adminIndex') }}">FAQ-Beheer</a>
                 <a href="{{ route('admin.contact.index') }}">Contactberichten</a>
             @endif
         @endauth

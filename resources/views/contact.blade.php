@@ -3,7 +3,7 @@
 @section('title', 'Contacteer ons')
 
 @section('content')
-    <h1>Contacteer de admins</h1>
+    <h1>Contacteer ons</h1>
 
     @if ($errors->any())
         <ul style="color: red;">
