@@ -26,4 +26,10 @@ class ContactController extends Controller
 
         return redirect()->route('contact.create')->with('status', 'Je bericht is verstuurd.');
     }
+
+    public function index()
+    {
+        $messages = ContactMessage::with('user')->latest()->get();
+        return view('admin.contactIndex', compact('messages'));
+    }
 }

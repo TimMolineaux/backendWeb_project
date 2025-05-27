@@ -98,3 +98,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/contact', [ContactController::class, 'create'])->name('contact.create');
     Route::post('/contact', [ContactController::class, 'store'])->name('contact.store');
 });
+
+Route::middleware(['auth', AdminMiddleware::class])->group(function () {
+    Route::get('/admin/contact', [ContactController::class, 'index'])->name('admin.contact.index');
+});

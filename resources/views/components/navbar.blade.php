@@ -2,11 +2,13 @@
     <div class="nav-left">
         <a href="{{ route('index') }}">Home</a>
         <a href="{{ route('faq.public') }}">FAQ</a>
+        <a href="{{ route('contact.create') }}">Contact</a>
         @auth
             @if(Auth::user()->role === 'admin')
                 <a href="{{ route('admin.userIndex') }}">Gebruikersbeheer</a>
                 <a href="{{ route('news.newsIndex') }}">Nieuwsbeheer</a>
                 <a href="{{ route('faq.adminIndex') }}">FaqsBeheer</a>
+                <a href="{{ route('admin.contact.index') }}">Contactberichten</a>
             @endif
         @endauth
     </div>
